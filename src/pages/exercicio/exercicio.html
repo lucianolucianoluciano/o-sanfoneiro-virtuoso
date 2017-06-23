@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhes do Exercício</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="onEditarExercicio()">
+        Editar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+
+  <h1>{{ exercicio.nome }}</h1>
+
+  <ion-card>
+    <ion-card-content class="descricaoExercicio" text-justify>
+      {{ exercicio.desc }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="dificuldadeCard" padding>
+    <h2><b>Dificuldade: </b> {{ exercicio.nivel.toString() + '.0'}} </h2>
+  </ion-card>
+
+  <ion-list text-left>
+    <ion-list-header no-lines>Instrumentos</ion-list-header>
+    <ion-item *ngFor="let instrumento of exercicio.instrumento; let i = index" no-lines>
+      <ion-icon name="musical-notes" item-start color="primary"></ion-icon>
+      <ion-label>{{ instrumento.charAt(0).toUpperCase() + instrumento.slice(1)}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <hr>
+</ion-content>

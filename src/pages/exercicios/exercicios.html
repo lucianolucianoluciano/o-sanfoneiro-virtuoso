@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onNovoExercicio()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>Exercícios</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button
+      ion-item
+      *ngFor="let exercicio of listaExercicios; let i = index"
+      (click)="onCarregarExercicio(exercicio, i)">
+      <ion-thumbnail item-start>
+        <img src="assets/icon/sanfona.jpg">
+      </ion-thumbnail>
+      <h2>{{ exercicio.nome }}</h2>
+      <ion-note>{{ exercicio.desc | limitar: 20 }}</ion-note>
+    </button>
+  </ion-list> 
+</ion-content>

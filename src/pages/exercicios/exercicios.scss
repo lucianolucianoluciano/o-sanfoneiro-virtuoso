@@ -1,0 +1,15 @@
+page-exercicios {
+    $tamanhoIcon: 4rem;
+    ion-thumbnail{
+        min-width: $tamanhoIcon !important;
+        max-width: $tamanhoIcon !important; 
+        min-height: $tamanhoIcon !important;
+        max-height: $tamanhoIcon !important; 
+        img {
+            max-width: $tamanhoIcon !important;    
+            min-width: $tamanhoIcon !important;
+            max-height: $tamanhoIcon !important;    
+            min-height: $tamanhoIcon !important;
+        }   
+    }
+}
