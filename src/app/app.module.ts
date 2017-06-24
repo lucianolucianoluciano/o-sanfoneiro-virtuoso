@@ -14,6 +14,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { LimitarPipe } from '../pipes/limitar/limitar';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule} from 'angularfire2/database';
+
+export const firebaseConfig = {
+    apiKey: "AIzaSyBa3a1FD3uoHUs4U-MAzf4aQI-PRSTJ2L8",
+    authDomain: "o-sanfoneiro-virtuoso.firebaseapp.com",
+    databaseURL: "https://o-sanfoneiro-virtuoso.firebaseio.com",
+    projectId: "o-sanfoneiro-virtuoso",
+    storageBucket: "",
+    messagingSenderId: "208000873572"
+  };
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -28,6 +41,8 @@ import { LimitarPipe } from '../pipes/limitar/limitar';
   ],
   imports: [
     BrowserModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

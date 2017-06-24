@@ -7,12 +7,60 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>edit-exercicio</ion-title>
+    <ion-title>{{ getTitulo() }} Exercício</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <form #f="ngForm" (ngSubmit)="onSalvarExercicio(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Título</ion-label>
+        <ion-input
+          type="text"
+          name="nome"
+          placeholder="ex: Arpejo com 6ª"
+          required
+          ngModel></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-textarea name="desc" ngModel required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Nível de Dificuldade</ion-label>
+        <ion-select ngModel required name="nivel">
+          <ion-option
+            *ngFor="let opcaoDificuldade of opcoesDificuldade"
+            [value]="opcaoDificuldade">{{ opcaoDificuldade }}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <button
+      type="button"
+      clear
+      ion-button
+      block
+      (click)="onAdicionarInstrumento()">Adicionar Instrumento</button>
+    <ion-list>
+      <ion-item-sliding *ngFor="let instrumento of instrumentosView; let i = index;">
+        <ion-item>
+          <h2></h2>
+        </ion-item>
+        <ion-item-options side="right" (click)="onRemoverInstrumento(i)">
+          <button ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+            Remover
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!f.valid">Salvar Exercício</button>
+  </form>
 </ion-content>

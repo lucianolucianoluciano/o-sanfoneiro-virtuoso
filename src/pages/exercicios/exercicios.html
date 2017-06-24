@@ -18,13 +18,13 @@
   <ion-list>
     <button
       ion-item
-      *ngFor="let exercicio of listaExercicios; let i = index"
-      (click)="onCarregarExercicio(exercicio, i)">
+      *ngFor="let exercicio of listaExercicios | async"
+      (click)="onCarregarExercicio(exercicio, exercicio.$key)">
       <ion-thumbnail item-start>
         <img src="assets/icon/sanfona.jpg">
       </ion-thumbnail>
       <h2>{{ exercicio.nome }}</h2>
-      <ion-note>{{ exercicio.desc | limitar: 20 }}</ion-note>
+      <ion-note>{{ exercicio.desc | limitar: 30 }}</ion-note>
     </button>
   </ion-list> 
 </ion-content>
