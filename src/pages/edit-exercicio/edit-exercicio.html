@@ -21,17 +21,16 @@
         <ion-input
           type="text"
           name="nome"
-          placeholder="ex: Arpejo com 6ª"
           required
-          ngModel></ion-input>
+          [ngModel]="exercicio.nome"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Descrição</ion-label>
-        <ion-textarea name="desc" ngModel required></ion-textarea>
+        <ion-textarea name="desc" [ngModel]="exercicio.desc" required></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label floating>Nível de Dificuldade</ion-label>
-        <ion-select ngModel required name="nivel">
+        <ion-label>Nível de Dificuldade</ion-label>
+        <ion-select [ngModel]="exercicio.nivel" required name="nivel">
           <ion-option
             *ngFor="let opcaoDificuldade of opcoesDificuldade"
             [value]="opcaoDificuldade">{{ opcaoDificuldade }}</ion-option>
@@ -47,7 +46,8 @@
     <ion-list>
       <ion-item-sliding *ngFor="let instrumento of instrumentosView; let i = index;">
         <ion-item>
-          <h2></h2>
+          <ion-icon name="musical-notes" item-start color="primary"></ion-icon>
+          <h2>{{ instrumento }}</h2>
         </ion-item>
         <ion-item-options side="right" (click)="onRemoverInstrumento(i)">
           <button ion-button color="danger">

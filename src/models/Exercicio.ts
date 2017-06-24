@@ -1,8 +1,10 @@
-export interface Exercicio {
-    nome: string;
-    desc: string;
-    nivel: number;
-    instrumento: string[];
-    criador: string;
+export class Exercicio {
     $key: any;
+
+    constructor(
+        public nome?: string,
+        public desc?: string,
+        public nivel?: number,
+        public instrumento?: string[],
+        public criador?: string){};
 }
