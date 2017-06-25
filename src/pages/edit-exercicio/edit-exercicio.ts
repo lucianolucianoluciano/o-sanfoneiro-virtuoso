@@ -79,7 +79,7 @@ export class EditExercicioPage {
 
   onSalvarExercicio(f: NgForm){
     let carregandoExercicios = this.loadingCtrl.create({
-      content: 'Salvando dados;'
+      content: 'Salvando dados'
     });
     carregandoExercicios.present();
 
@@ -104,12 +104,14 @@ export class EditExercicioPage {
 
   criarExercicio(novoExercicio: Exercicio, loadingMsg: any){
     this.db.list('/exercicios').push(novoExercicio).then(()=>{
+      loadingMsg.dismiss();
       this.alertCtrl.create({
       title: 'Sucesso',
       subTitle:'O exercício foi adicionado com sucesso!',
       buttons: ['OK'] }).present();
       this.navCtrl.popToRoot();
     }).catch(()=>{
+      loadingMsg.dismiss();
       this.alertCtrl.create({
       title: 'Algo deu errado :/',
       subTitle:'Os dados não foram salvos!' }).present();

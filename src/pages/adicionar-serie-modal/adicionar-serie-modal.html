@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Adicionar Série</ion-title>
+    <ion-buttons end>
+      <button color="danger" style="font-size: 0.9em" ion-button (click)="onFecharModal()">
+        Cancelar
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onAdicionarSerie(f)">
+    <ion-list  radio-group required ngModel name="exercicioSelecionado">
+        <ion-list-header>
+          Selecione o exercício
+        </ion-list-header>
+        <ion-scroll style="height: 250px" scrollY="true">
+        <ion-item *ngFor="let exercicio of exerciciosDisponiveis | async">
+          <ion-label><b>{{ exercicio.nome }}</b></ion-label>
+          <ion-radio [value]="exercicio"></ion-radio>
+        </ion-item>
+        </ion-scroll>
+    </ion-list>
+    
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label fixed>Duração:</ion-label>
+        <!--<ion-input type="text" ngModel name="tempo" placeholder="ex: 06:35"></ion-input>-->
+        <ion-datetime displayFormat="mm:ss" [ngModel]="duracaoDefault" required name="duracao"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Instrumento:</ion-label>
+        <ion-input type="text" [ngModel]="'Sanfona'" name="instrumento" required placeholder="ex: Sanfona"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button
+      type="submit"
+      ion-button
+      block
+      [disabled]="!f.valid">
+      Adicionar Série
+    </button>
+  </form>
+</ion-content>

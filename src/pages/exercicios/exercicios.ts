@@ -14,8 +14,10 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 export class ExerciciosPage{
 
   listaExercicios: FirebaseListObservable<Exercicio[]>;
+  grupoSelecionado: string;
 
   constructor(private navCtrl: NavController, db: AngularFireDatabase, loadingCtrl: LoadingController) {
+    this.grupoSelecionado = "gerais";
     let carregandoExercicios = loadingCtrl.create({
       content: 'Carregando Exercícios'
     });

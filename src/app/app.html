@@ -1,1 +1,48 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<!--
+    Futuramente colocar os dados do usuário aqui
+-->
+<ion-menu [content]="nav">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button
+        ion-item
+        icon-left
+        (click)="onCarregarPagina(rootPage)"
+        *ngIf="isAutenticado">
+        <ion-icon name="book"></ion-icon>
+        Exercício
+      </button>
+      <button
+        ion-item
+        icon-left
+        (click)="onCarregarPagina(signinPage)"
+        *ngIf="!isAutenticado">
+        <ion-icon name="log-in"></ion-icon>
+        Login
+      </button>
+      <button
+        ion-item
+        icon-left
+        (click)="onCarregarPagina(signupPage)"
+        *ngIf="!isAutenticado">
+        <ion-icon name="person"></ion-icon>
+        Cadastrar
+      </button>
+      <button
+        ion-item
+        icon-left
+        (click)="onLogout()"
+        *ngIf="isAutenticado">
+        <ion-icon name="log-out"></ion-icon>
+        Deslogar
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #nav></ion-nav>
